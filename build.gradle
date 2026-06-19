@@ -1,18 +1,26 @@
 plugins {
     id 'java'
+    id "io.qameta.allure" version "2.11.2"
 }
 
-group = 'Sh.In'
+group = 'guru.qa'
 version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
+def selenideVersion = "7.2.3"
+def junitVersion = "5.10.2"
+def allureVersion = "2.25.0"
+
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    testImplementation(
+            "com.codeborne:selenide:$selenideVersion",
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion"
+    )
 }
 
 test {
